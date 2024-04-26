@@ -1,0 +1,89 @@
+{%  load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Page</title>
+    <style>
+        body {
+            background-image: url('{% static 'images/image1.jpg' %}');
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+        a {
+            color: black;
+        }
+        .image-container {
+            width: 30%;
+            margin: 0 auto 20px; /* Set top and bottom margin to 0, and horizontally center the container */
+            text-align: center;
+        }
+        .image-container img {
+            width: 100%;
+        }
+    </style>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+<body>
+<a href="{% url 'register' %}">Sign-Up</a>
+<a href="{% url 'login' %}">Login</a>
+<a href="{% url 'About' %}">About</a>
+<a href="{% url 'Contact' %}">Contact</a>
+<a href="{% url '' %}">Home</a>
+<a href="{% url 'logout' %}">Logout |</a>
+<br><br><br><br><br>
+{% block 'b1' %}
+  <h2 align="center"><font color="green">POSTS</font></h2>
+<div>
+    {% for i in messages %}
+    <h3 align="center"><font color="red">{{ i }}</font></h3>
+    {% endfor %}
+</div>
+{% endblock %}
+
+<div class="image-container">
+    <img src="{% static 'images/nature.jpg' %}" alt="Image 1">
+    <p><font color="#9966ff">View the Beauty of the Nature</font></p>
+</div>
+<div class="image-container">
+    <img src="{% static 'images/bolt.jpg' %}" alt="Image 2">
+    <p><font color="#3366ff">Bolt & His Partner in Action</font></p>
+</div>
+<div class="image-container">
+    <img src="{% static 'images/kungfupanda.jpg' %}" alt="Image 3">
+    <p><font color="#3366ff">Kungfu Panda Kicks</font></p>
+</div>
+<div class="image-container">
+    <img src="{% static 'images/monsterinc.jpg' %}" alt="Image 4">
+    <p><font color="#3366ff">Scary Monster is Scared</font></p>
+</div>
+<div class="image-container">
+    <img src="{% static 'images/snow.jpg' %}" alt="Image 5">
+    <p><font color="#1affff">Snow&Kids</font></p>
+</div>
+<div class="image-container">
+    <img src="{% static 'images/edu.jpg' %}" alt="Image 6">
+    <p><font color="#3366ff">Education</font></p>
+</div>
+<div class="image-container">
+    <img src="{% static 'images/vedantu.jpg' %}" alt="Image 7">
+    <p><font color="#3366ff">Online Learning platform</font></p>
+</div>
+<div class="image-container">
+    <img src="{% static 'images/spotify.jpg' %}" alt="Image 8">
+    <p><font color="#1aff1a">Get Spotify&Listen Music</font></p>
+</div>
+
+{% block 'posts' %}
+  <h2 align="center"><font color="green">THESE POSTS HELPS USERS TO VIEW DIFFERENT THINGS</font></h2>
+  {% for post in posts %}
+    <div>
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.content }}</p>
+    </div>
+    <hr>
+  {% empty %}
+    <p align="center">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+  {% endfor %}
+{% endblock %}
+</body>
+</html>

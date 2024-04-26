@@ -1,0 +1,41 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Social Media Platform</title>
+     <style>
+        a {
+            color: #9966ff;
+        }
+        /* Style for the image */
+        img {
+            width: 60%; /* Adjust the width as needed */
+            display: block; /* Center the image */
+            margin: 0 auto; /* Center the image */
+            margin-top: 20px; /* Add some space above the image */
+        }
+    </style>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+<body style="background-image: url('{% static 'images/media.jpg' %}'); background-repeat: no-repeat; background-size: 100%;">
+    <a href="{% url 'register' %}">Sign-Up</a>
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'About' %}">About</a>
+    <a href="{% url 'Contact' %}">Contact</a>
+    <a href="{% url 'changepassword' %}">Change Password</a>
+    <a href="{% url '' %}">Home</a>
+    <br><br><br><br><br>
+    {% block 'b1' %}
+        <h2 align="center"><font color="#ff6666">Welcome to our Social Media Platform!</font></h2>
+        <p><font color="#ff6666">Explore a world of diverse content and connect with like-minded individuals.</font></p>
+        <p><font color="#ff6666">Our platform offers a wide range of features to enhance your social media experience. Whether you're interested in staying up-to-date with the latest news, discovering new music and movies, sharing your creative work, or connecting with friends and family, we've got you covered.</font></p>
+        <p><font color="#ff6666">Join our community today and start exploring!</font></p>
+        <div>
+            {% for i in messages %}
+            <h4 align="center"><font color="red">{{i}}</font></h4>
+            {% endfor %}
+        </div>
+        <!-- Add your image below -->
+    {% endblock %}
+</body>
+</html>
